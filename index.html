@@ -8,59 +8,74 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
 
   <header>
+    <div class="theme">
+      <div class="container">
+        <span>Light</span>
+        <div class="toggle">
+          <input id="switch" type="checkbox" name="theme">
+          <label for="switch">Toggle</label>
+        </div>
+        <span>Dark</span>
+      </div>
+    </div>
     <img src="./assets/logo.svg" alt="Logo Dev Finance">
   </header>
 
   <main class="container">
-    <section id="balance">
-      <h2 class="sr-only">Balanço</h2>
+    <div data-aos="fade-up" data-aos-duration="1000">
+      <section id="balance">
+        <h2 class="sr-only">Balanço</h2>
 
-      <div class="card">
-        <h3>
-          <span>Entradas</span>
-          <img src="./assets/income.svg" alt="Imagem de entradas">
-        </h3>
-        <p id="incomeDisplay">R$ 0,00</p>
-      </div>
-      <div class="card">
-        <h3>
-          <span>Saídas</span>
-          <img src="./assets/expense.svg" alt="Imagem de saídas">
-        </h3>
-        <p id="expenseDisplay">R$ 0,00</p>
-      </div>
-      <div class="card total">
-        <h3>
-          <span>Total</span>
-          <img src="./assets/total.svg" alt="Imagem de total">
-        </h3>
-        <p id="totalDisplay">R$ 0,00</p>
-      </div>
-    </section>
+        <div class="card">
+          <h3>
+            <span>Entradas</span>
+            <img src="./assets/income.svg" alt="Imagem de entradas">
+          </h3>
+          <p id="incomeDisplay">R$ 0,00</p>
+        </div>
+        <div class="card">
+          <h3>
+            <span>Saídas</span>
+            <img src="./assets/expense.svg" alt="Imagem de saídas">
+          </h3>
+          <p id="expenseDisplay">R$ 0,00</p>
+        </div>
+        <div class="card total">
+          <h3>
+            <span>Total</span>
+            <img src="./assets/total.svg" alt="Imagem de total">
+          </h3>
+          <p id="totalDisplay">R$ 0,00</p>
+        </div>
+      </section>
+    </div>
 
-    <section id="transaction">
-      <h2 class="sr-only">Transações</h2>
+    <div data-aos="fade-up" data-aos-duration="2000">
+      <section id="transaction">
+        <h2 class="sr-only">Transações</h2>
 
-      <a href="#" onclick="Modal.toggle()" class="button new">+ Nova Transação</a>
+        <a href="#" onclick="Modal.toggle()" class="button new">+ Nova Transação</a>
 
-      <table id="data-table">
-        <thead>
-          <tr>
-            <th>Descrição</th>
-            <th>Valor</th>
-            <th>Data</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    </section>
+        <table id="data-table">
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Valor</th>
+              <th>Data</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </section>
+    </div>
   </main>
 
   <div class="modal-overlay">
@@ -95,6 +110,10 @@
   </footer>
 
   <script src="./scripts.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 
 </body>
 
