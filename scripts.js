@@ -1,3 +1,6 @@
+const html = document.querySelector("html")
+const checkbox = document.querySelector("input[name=theme]")
+
 const Modal = {
   toggle() {
     document
@@ -122,6 +125,14 @@ const Utils = {
   formatDate(date) {
     const splittedDate = date.split("-")
     return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`
+  },
+
+  getStyle(element, style) {
+    return window.getComputedStyle(element).getPropertyValue(style)
+  },
+
+  transformKey(key) {
+    return "--" + key.replace(/([A-Z])/, "-$1").toLowerCase()
   }
 }
 
@@ -190,6 +201,8 @@ const App = {
     
     DOM.updateBalance()
 
+    changeColors.change()
+
     Storage.set(Transaction.all)
 
   },
@@ -200,22 +213,14 @@ const App = {
   }
 }
 
-const html = document.querySelector("html")
-const checkbox = document.querySelector("input[name=theme]")
-
-const getStyle = (element, style) => 
-  window
-    .getComputedStyle(element)
-    .getPropertyValue(style)
-
 const initialColors = {
-  bg: getStyle(html, "--bg"),
-  bgHeader: getStyle(html, "--bg-header"),
-  bgCard: getStyle(html, "--bg-card"),
-  textCard: getStyle(html, "--text-card"),
-  darkBlue: getStyle(html, "--dark-blue"),
-  bgModal: getStyle(html, "--bg-modal"),
-  inputModal: getStyle(html, "--input-modal"),
+  bg: Utils.getStyle(html, "--bg"),
+  bgHeader: Utils.getStyle(html, "--bg-header"),
+  bgCard: Utils.getStyle(html, "--bg-card"),
+  textCard: Utils.getStyle(html, "--text-card"),
+  darkBlue: Utils.getStyle(html, "--dark-blue"),
+  bgModal: Utils.getStyle(html, "--bg-modal"),
+  inputModal: Utils.getStyle(html, "--input-modal"),
 }
 
 const darkMode = {
@@ -226,19 +231,20 @@ const darkMode = {
   darkBlue: "#969cb3",
   bgModal: "#202024",
   inputModal: "rgb(18, 18, 20)",
+}  
+
+const changeColors = {
+  set(colors) {
+    Object.keys(colors).map(key =>
+      html.style.setProperty(Utils.transformKey(key), colors[key])
+    )
+  },
+
+  change() {
+    checkbox.addEventListener("change", ({ target }) => {
+      target.checked ? changeColors.set(darkMode) : changeColors.set(initialColors)
+    })
+  }
 }
-
-const transformKey = key => 
-  "--" + key.replace(/([A-Z])/, "-$1").toLowerCase()
-
-const changeColors = (colors) => {
-  Object.keys(colors).map(key =>
-    html.style.setProperty(transformKey(key), colors[key])
-  )
-}
-
-checkbox.addEventListener("change", ({ target }) => {
-  target.checked ? changeColors(darkMode) : changeColors(initialColors)
-})
 
 App.init()
