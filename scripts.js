@@ -149,11 +149,33 @@ const Form = {
     }
   },
 
+  checkField(input) {
+    if(input.value == '') {
+      input.classList.add('error')
+    } else {
+      input.classList.remove('error')
+      input.classList.add('success')
+    }
+  },
+
   validateFields() {
+
+    let inputs = [
+      inputDescription = Form.description,
+      inputAmount = Form.amount,
+      inputDate = Form.date,
+    ]
+
+    for(let i=0; i<inputs.length; i++) {
+      let input = inputs[i]
+      Form.checkField(input)
+    }
+
     const { description, amount, date } = Form.getValues()
     
     if( description.trim() === "" || amount.trim() === "" || date.trim() === "" ) {
-      throw new Error("Por favor, preencha todos os campos")
+      const error = new Error("Por favor, preencha todos os campos")
+      throw error
     }
   },
 
@@ -174,6 +196,10 @@ const Form = {
     Form.description.value = ""
     Form.amount.value = ""
     Form.date.value = ""
+
+    Form.description.classList.remove('success')
+    Form.amount.classList.remove('success')
+    Form.date.classList.remove('success')
   },
 
   submit(event) {

@@ -260,6 +260,16 @@ input {
   width: 100%;
 }
 
+input.error {
+  border: 2px solid var(--red);
+  opacity: 0.7;
+}
+
+input.success {
+  border: 2px solid var(--green);
+  opacity: 0.7;
+}
+
 .input-group {
   margin-top: 0.8rem;
 }
