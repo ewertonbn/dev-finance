@@ -242,6 +242,82 @@ td.expense {
   z-index: 1;
 }
 
+.modal-result {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999;
+}
+
+.modal-result .modal {
+  padding: 3rem 8rem;
+  text-align: center;
+}
+
+.modal-result.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.show-result.success {
+  background: #25d366;
+}
+
+.show-result.error {
+  background: #fb4242;
+}
+
+.show-result.error #button-result {
+  background: white;
+  color: var(--red);
+  opacity: 0.9;
+  transition: all 0.5s;
+}
+
+.show-result.error #button-result:hover {
+  opacity: 1;
+}
+
+#button-result {
+  width: 200px;
+  margin: auto;
+  background: white;
+  color: #25d366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 600;
+  opacity: 0.9;
+  transition: all 0.5s;
+}
+
+#button-result:hover {
+  opacity: 1;
+}
+
+.modal-title {
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+}
+
+.modal-text {
+  color: white;
+  font-size: 17px;
+  text-align: center;
+  margin: 10px 0 20px 0;
+}
+
 /* Form =========================== */
 #form {
   max-width: 500px;

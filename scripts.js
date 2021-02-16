@@ -2,10 +2,32 @@ const html = document.querySelector("html")
 const checkbox = document.querySelector("input[name=theme]")
 
 const Modal = {
-  toggle() {
+  titleStatus: document.querySelector('.modal-title'),
+  textStatus: document.querySelector('.modal-text'),
+  modalStatus: document.querySelector('.show-result'),
+
+  toggleTransaction() {
     document
       .querySelector('.modal-overlay')
       .classList.toggle('active')
+  },
+  toggleResult() {
+    document
+      .querySelector('.modal-result')
+      .classList.toggle('active')
+  },
+
+  statusError() {
+    Modal.modalStatus.classList.add('error')
+    Modal.titleStatus.innerText = "Erro!"
+    Modal.textStatus.innerText = error.message
+  },
+  
+  statusSuccess() {
+    Modal.modalStatus.classList.remove('error')
+    Modal.modalStatus.classList.add('success')
+    Modal.titleStatus.innerText = "Sucesso!"
+    Modal.textStatus.innerText = "Parabéns, transação adicionada."
   }
 }
 
@@ -174,8 +196,7 @@ const Form = {
     const { description, amount, date } = Form.getValues()
     
     if( description.trim() === "" || amount.trim() === "" || date.trim() === "" ) {
-      const error = new Error("Por favor, preencha todos os campos")
-      throw error
+      throw error = new Error("Por favor, preencha todos os campos")
     }
   },
 
@@ -210,10 +231,13 @@ const Form = {
       const transaction =Form.formatValues()
       Transaction.add(transaction)
       Form.clearFields()
-      Modal.toggle()
+      Modal.toggleTransaction()
+      Modal.toggleResult()
+      Modal.statusSuccess()
 
     } catch (error) {
-      alert(error.message)
+      Modal.toggleResult()
+      Modal.statusError()
     }
   }
 }

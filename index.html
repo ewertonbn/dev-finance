@@ -60,7 +60,7 @@
       <section id="transaction">
         <h2 class="sr-only">Transações</h2>
 
-        <a href="#" onclick="Modal.toggle()" class="button new">+ Nova Transação</a>
+        <a href="#" onclick="Modal.toggleTransaction()" class="button new">+ Nova Transação</a>
 
         <table id="data-table">
           <thead>
@@ -97,11 +97,19 @@
             <input type="date" id="date" name="date">
           </div>
           <div class="input-group actions">
-            <a href="#" onclick="Modal.toggle()" class="button cancel">Cancelar</a>
+            <a href="#" onclick="Modal.toggleTransaction()" class="button cancel">Cancelar</a>
             <button>Salvar</button>
           </div>
         </form>
       </div>
+    </div>
+  </div>
+
+  <div class="modal-result">
+    <div class="modal show-result">
+      <h3 class="modal-title"></h3>
+      <p class="modal-text"></p>
+      <a href="#" onclick="Modal.toggleResult()" id="button-result" class="modal-button">Ok</a>
     </div>
   </div>
 
