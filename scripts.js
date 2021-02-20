@@ -1,5 +1,5 @@
 const html = document.querySelector("html")
-const checkbox = document.querySelector("input[name=theme]")
+let checkbox = document.querySelector("input[name=theme]")
 
 const Modal = {
   titleStatus: document.querySelector('.modal-title'),
@@ -38,6 +38,18 @@ const Storage = {
 
   set(transactions) {
     localStorage.setItem("dev.finances:transactions", JSON.stringify(transactions))
+  },
+
+  activeTheme() {
+    localStorage.setItem("dev.finances:theme", "true")
+  },
+
+  desactiveTheme() {
+    localStorage.setItem("dev.finances:theme", "false")
+  }, 
+
+  getTheme() {
+    return localStorage.getItem('dev.finances:theme')
   }
 }
 
@@ -120,6 +132,13 @@ const DOM = {
     document
       .getElementById('totalDisplay')
       .innerHTML = Utils.formatCurrency(Transaction.total())
+
+    let cardTotal = document.querySelector('.card.total');
+    if(Transaction.total() < 0) {
+      cardTotal.classList.add('negative')
+    } else {
+      cardTotal.classList.remove('negative')
+    }
   },
   clearTransaction() {
     DOM.transactionsContainer.innerHTML = ""
@@ -140,8 +159,8 @@ const Utils = {
   },
 
   formatAmount(value) {
-    value = Number(value) * 100
-    return value
+    value = value * 100
+    return Math.round(value)
   },
 
   formatDate(date) {
@@ -251,6 +270,8 @@ const App = {
     
     DOM.updateBalance()
 
+    changeColors.loadTheme()
+
     changeColors.change()
 
     Storage.set(Transaction.all)
@@ -292,8 +313,20 @@ const changeColors = {
 
   change() {
     checkbox.addEventListener("change", ({ target }) => {
-      target.checked ? changeColors.set(darkMode) : changeColors.set(initialColors)
+      target.checked ? Storage.activeTheme() : Storage.desactiveTheme()
+      changeColors.loadTheme()
     })
+  },
+
+  loadTheme() {
+    let theme = Storage.getTheme()
+
+    if(theme === 'true') {
+      changeColors.set(darkMode)
+      checkbox.checked = true
+    } else {
+      changeColors.set(initialColors)
+    }
   }
 }
 

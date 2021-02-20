@@ -108,9 +108,8 @@ header {
   text-align: center;
 }
 
-#logo {
-  color: #FFF;
-  font-weight: 100;
+header img {
+  margin-top: 30px;
 }
 
 /* Balance =========================== */
@@ -149,6 +148,11 @@ header {
 
 .card.total {
   background: var(--green);
+  color: white;
+}
+
+.card.total.negative {
+  background: var(--red);
   color: white;
 }
 
@@ -442,4 +446,16 @@ input:checked + label::after {
 
 label:active:after {
   width: 45px;
+}
+
+@media (max-width: 700px) {
+
+  .modal {
+    width: 90%;
+  }
+
+  .modal-result .modal {
+    padding: 3rem 2rem;
+  }
+
 }
