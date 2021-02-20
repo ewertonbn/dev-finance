@@ -47,6 +47,6 @@ You can view the layout of the project through [this link](https://www.figma.com
 
 ## :memo: License
 
-This project is under the MIT license. See the [LICENSE] file (LICENSE.md) for more details.
+This project is under the MIT license. See the [LICENSE](LICENSE.md) file  for more details.
 
 Developed by Ewerton Bernardo :wave: [Let's connect!](https://www.linkedin.com/in/ewertonbn/)
