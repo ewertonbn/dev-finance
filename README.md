@@ -18,8 +18,8 @@
 <br>
 
 <p align="center"> 
-  <img src="./assets/desktop.gif" width="60%"/>
-  <img src="./assets/mobile.gif" width="15%"/>
+  <img src="./assets/desktop.gif" width="80%"/>
+  <img src="./assets/mobile.gif" width="20%"/>
 </p>
 
 ## 🚀 Tecnologies
