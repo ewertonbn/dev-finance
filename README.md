@@ -18,7 +18,7 @@
 <br>
 
 <p align="center"> 
-  <img src="./assets/desktop.gif" width="80%"/>
+  <img src="./assets/desktop.gif" width="75%"/>
   <img src="./assets/mobile.gif" width="19%"/>
 </p>
 
